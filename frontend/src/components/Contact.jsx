@@ -39,42 +39,42 @@ const Contact = () => {
   const leftRef = useRef(null);
   const rightRef = useRef(null);
 
-  useEffect(() => {
-    const left = leftRef.current;
-    const right = rightRef.current;
+useEffect(() => {
+  const left = leftRef.current;
+  const right = rightRef.current;
 
-    gsap.fromTo(
-      left,
-      { x: -150, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: left,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
+  gsap.fromTo(
+    left,
+    { x: -120, opacity: 0 },
+    {
+      x: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: left,
+        start: "top 90%",  
+        toggleActions: "play none none reverse",
+      },
+    }
+  );
 
-    gsap.fromTo(
-      right,
-      { x: 150, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: right,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
-  }, []);
+  gsap.fromTo(
+    right,
+    { x: 120, opacity: 0 },
+    {
+      x: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: right,
+        start: "top 90%",  
+        toggleActions: "play none none reverse",
+      },
+    }
+  );
+}, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#fafafa] to-[#f0f0f0] px-6 py-20 font-[Inter] overflow-hidden">
