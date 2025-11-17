@@ -32,23 +32,26 @@ const Users = () => {
 
   const handlePrev = () =>
     currentPage > 1 && setCurrentPage((prev) => prev - 1);
+
   const handleNext = () =>
     currentPage < totalPages && setCurrentPage((prev) => prev + 1);
 
-const handleRemove = async (id) => {
-  try {
-    setLoading(true);
-    await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/admin/removeusers/${id}`);
+  const handleRemove = async (id) => {
+    try {
+      setLoading(true);
+      const res = await axios.delete(
+        `${import.meta.env.VITE_BACKEND_URL}/admin/removeusers/${id}`
+      );
 
-    setUsers((prev) => prev.filter((u) => u._id !== id));
+      setUsers((prev) => prev.filter((u) => u._id !== id));
 
-    toast.success(res.data.message);
-  } catch (err) {
-    console.error(err);
-  } finally {
-    setLoading(false);
-  }
-};
+      toast.success(res.data.message);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleBlock = async (id) => {
     try {
@@ -57,7 +60,6 @@ const handleRemove = async (id) => {
         `${import.meta.env.VITE_BACKEND_URL}/admin/users/${id}/block`
       );
 
-     
       setUsers((prevUsers) =>
         prevUsers.map((user) =>
           user._id === id ? { ...user, isBlocked: !user.isBlocked } : user
@@ -65,7 +67,6 @@ const handleRemove = async (id) => {
       );
 
       toast.success(res.data.message);
-
     } catch (err) {
       toast.error("Failed to update user status");
       console.error(err);
@@ -73,7 +74,6 @@ const handleRemove = async (id) => {
       setLoading(false);
     }
   };
-
 
   if (loading) {
     return (
@@ -84,7 +84,7 @@ const handleRemove = async (id) => {
   }
 
   return (
-    <div className="p-6 flex justify-center min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100">
+    <div className="p-6 flex justify-center min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-x-hidden">
       <div className="w-full max-w-6xl backdrop-blur-xl bg-white/80 border border-gray-200 rounded-3xl shadow-xl p-8 transition-all duration-300">
         <h1 className="text-4xl font-[Playfair_Display] font-semibold mb-8 text-gray-800 text-center tracking-wide">
           User Management
@@ -110,10 +110,12 @@ const handleRemove = async (id) => {
                 )}
 
                 <div>
-                  <p className="font-semibold text-gray-900 text-lg">{u.name}
+                  <p className="font-semibold text-gray-900 text-lg">
+                    {u.name}
                     <span
-                      className={`font-medium ${u.isBlocked ? "text-red-500" : "text-green-500"
-                        }`}
+                      className={`font-medium ${
+                        u.isBlocked ? "text-red-500" : "text-green-500"
+                      }`}
                     >
                       {u.isBlocked === true ? " (Blocked)" : " (Active)"}
                     </span>
@@ -121,10 +123,14 @@ const handleRemove = async (id) => {
                   <p className="text-gray-600 text-sm">{u.email}</p>
                   <p className="text-sm text-gray-500 mt-1">
                     Role:{" "}
-                    <span className="font-medium text-gray-700">{u.role}</span> | Status:{" "}
+                    <span className="font-medium text-gray-700">{u.role}</span>{" "}
+                    | Status:{" "}
                     <span
-                      className={`font-medium ${u.status === "blocked" ? "text-red-500" : "text-green-500"
-                        }`}
+                      className={`font-medium ${
+                        u.status === "blocked"
+                          ? "text-red-500"
+                          : "text-green-500"
+                      }`}
                     >
                       {u.status}
                     </span>
@@ -137,7 +143,7 @@ const handleRemove = async (id) => {
                 </div>
               </div>
 
-              <div className="flex flex-row sm:flex-col md:flex-row gap-3">
+              <div className="flex flex-row sm:flex-col md:flex-row gap-3 flex-wrap">
                 <button
                   onClick={() => handleRemove(u._id)}
                   className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-500 to-red-600 text-white font-medium hover:shadow-md hover:opacity-90 transition-all duration-200"
@@ -147,10 +153,11 @@ const handleRemove = async (id) => {
 
                 <button
                   onClick={() => handleBlock(u._id)}
-                  className={`px-5 py-2.5 rounded-xl font-medium transition-all duration-200 ${u.isBlocked === true
-                    ? "bg-gradient-to-r from-blue-500 to-blue-600 hover:shadow-md text-white"
-                    : "bg-gradient-to-r from-yellow-500 to-yellow-600 hover:shadow-md text-white"
-                    }`}
+                  className={`px-5 py-2.5 rounded-xl font-medium transition-all duration-200 ${
+                    u.isBlocked === true
+                      ? "bg-gradient-to-r from-blue-500 to-blue-600 hover:shadow-md text-white"
+                      : "bg-gradient-to-r from-yellow-500 to-yellow-600 hover:shadow-md text-white"
+                  }`}
                 >
                   {u.isBlocked === true ? "Unblock" : "Block"}
                 </button>
