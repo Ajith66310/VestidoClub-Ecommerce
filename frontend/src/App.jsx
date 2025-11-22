@@ -20,6 +20,7 @@ import Shipping from "./pages/Shipping";
 import UserProfile from "./pages/UserProfile.jsx";
 import Orders from "./pages/Orders.jsx";
 import Layout from "./components/Layout.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 
 const socket = io(import.meta.env.VITE_URL, { transports: ["websocket"] });
 
@@ -81,6 +82,7 @@ function App() {
           <Route path="shipping" element={<Shipping />} />
           <Route path="orders" element={<Orders />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Route>
         <Route path="userprofile" element={<UserProfile />} />
       </Routes>
