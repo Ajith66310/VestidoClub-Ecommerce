@@ -4,11 +4,11 @@ const PrivacyPolicy = () => {
 
   // Scroll to top when page loads
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   return (
-    <div className="bg-white text-gray-800 px-6 md:px-36 py-20 mt-20 leading-relaxed">
+    <div className="bg-white text-gray-800 px-6 md:px-36 py-20 pt-20 leading-relaxed">
       <h1 className="text-4xl font-bold mb-6 text-black tracking-wide">
         <span className="text-red-600">Privacy</span> Policy
       </h1>
