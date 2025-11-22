@@ -168,6 +168,5 @@ npm run dev
 
  **Frontend -** https://vestido-club-ecommerce-foog.vercel.app/
  
- **Admin -** https://vestido-club-ecommerce.vercel.app/
 
 
