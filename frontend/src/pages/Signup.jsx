@@ -83,7 +83,7 @@ const Signup = () => {
         >
           <div className='text-center space-y-2'>
             <p className='font-[Poppins] text-lg tracking-wide'>
-              Welcome to <span className='font-bold text-red-600'>Bonkers</span>
+              Welcome to <span className='font-bold text-red-600'>Club</span>
             </p>
           </div>
 
