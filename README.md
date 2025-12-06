@@ -11,7 +11,7 @@ It provides a seamless shopping experience with **Google Authentication**, **Use
 -  Create and update your **User Profile**
 -  Browse trending fashion products
 -  Add and manage items in **Wishlist**
--  **Add to Cart** and **checkout securely**
+-  **Add to Cart** and **checkout** using **redux toolkit**
 -  **Razorpay** integration for online payments
 -  Track **order history and status**
 -  Smooth **GSAP + Framer Motion** animations
@@ -40,7 +40,8 @@ It provides a seamless shopping experience with **Google Authentication**, **Use
 - **GSAP 3**  
 - **Lucide React / React Icons**  
 - **Recharts** (Analytics)  
-- **Swiper.js** (carousels)   
+- **Swiper.js** (carousels)
+- **redux toolkit**  
 
 ###  Backend
 - **Node.js + Express 5**
@@ -52,7 +53,8 @@ It provides a seamless shopping experience with **Google Authentication**, **Use
 - **Mailjet**
 - **ioredis 5** (Caching)
 - **bcrypt 6** (Password Hashing)
-- **CORS + Cookie Parser + Dotenv**
+- **CORS**
+- **Dotenv**
 
 ###  Other Tools
 - **Vite** (Frontend bundler)
