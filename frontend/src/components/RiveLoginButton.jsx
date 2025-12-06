@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useRive, useStateMachineInput } from "@rive-app/react-canvas";
 
-const RIVE_FILE = "/loginButton.riv"; 
-const STATE_MACHINE = "State Machine 1"; 
+const RIVE_FILE = "/loginButton.riv";  
+const STATE_MACHINE = "State Machine 1";
 
 const RiveLoginButton = ({ onClick }) => {
   const { rive, RiveComponent } = useRive({
@@ -16,15 +16,22 @@ const RiveLoginButton = ({ onClick }) => {
 
   return (
     <div
-      className="cursor-pointer select-none"
+      className="cursor-pointer select-none bg-transparent w-full flex items-center"
       onMouseEnter={() => hoverInput && (hoverInput.value = true)}
       onMouseLeave={() => hoverInput && (hoverInput.value = false)}
       onClick={() => {
         if (clickInput) clickInput.fire();
         if (onClick) onClick();
       }}
+      style={{ width: "100%" }}
     >
-      <RiveComponent style={{ width: "100%", height: "60px" }} />
+      <RiveComponent
+        style={{
+          width: "100%",   
+          height: "90px",  
+          background: "transparent", 
+        }}
+      />
     </div>
   );
 };
