@@ -1,7 +1,7 @@
 import React from "react";
 import { useRive, useStateMachineInput } from "@rive-app/react-canvas";
 
-const RIVE_FILE = "/loginButton.riv";  
+const RIVE_FILE = "/loginButton.riv"; 
 const STATE_MACHINE = "State Machine 1";
 
 const RiveLoginButton = ({ onClick }) => {
@@ -16,21 +16,21 @@ const RiveLoginButton = ({ onClick }) => {
 
   return (
     <div
-      className="cursor-pointer select-none bg-transparent w-full flex items-center"
+      className="cursor-pointer select-none w-full bg-transparent flex justify-center items-center"
       onMouseEnter={() => hoverInput && (hoverInput.value = true)}
       onMouseLeave={() => hoverInput && (hoverInput.value = false)}
       onClick={() => {
         if (clickInput) clickInput.fire();
         if (onClick) onClick();
       }}
-      style={{ width: "100%" }}
     >
       <RiveComponent
         style={{
-          width: "100%",   
-          height: "90px",  
+          width: "220px", 
+          height: "70px", 
           background: "transparent", 
-        }}
+        
+                }}
       />
     </div>
   );
