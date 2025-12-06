@@ -7,6 +7,9 @@ import Cart from "./Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCart } from "../redux/cartSlice";
 
+// IMPORT RIVE LOGIN BUTTON
+import RiveLoginButton from "./RiveLoginButton";
+
 const Navbar = () => {
   const [userIcon, setUserIcon] = useState(false);
   const [profileDropdown, setProfileDropdown] = useState(false);
@@ -42,6 +45,7 @@ const Navbar = () => {
 
   return (
     <>
+      {/* DESKTOP NAVBAR */}
       <div className="hidden md:grid grid-cols-3 w-full absolute z-50 h-20 bg-transparent">
         <div id="brand-name" className="flex items-center pl-10">
           <p className="text-3xl font-[poppins] font-extrabold text-red-800">
@@ -49,18 +53,32 @@ const Navbar = () => {
           </p>
         </div>
 
-        <div id="nav-links" className="flex justify-center font-extrabold items-center gap-8 font-[Playfair] text-lg text-red-800">
-          <NavLink to="/" className="hover:text-red-900">HOME</NavLink>
-          <NavLink to="/fashion" className="hover:text-red-900">FASHION</NavLink>
-          <NavLink to="/favourite" className="hover:text-red-900">FAVOURITE</NavLink>
+        <div
+          id="nav-links"
+          className="flex justify-center font-extrabold items-center gap-8 font-[Playfair] text-lg text-red-800"
+        >
+          <NavLink to="/" className="hover:text-red-900">
+            HOME
+          </NavLink>
+          <NavLink to="/fashion" className="hover:text-red-900">
+            FASHION
+          </NavLink>
+          <NavLink to="/favourite" className="hover:text-red-900">
+            FAVOURITE
+          </NavLink>
         </div>
 
-        <div id="nav-items" className="flex justify-end items-center gap-5 pr-10 text-red-800 text-2xl relative">
+        <div
+          id="nav-items"
+          className="flex justify-end items-center gap-5 pr-10 text-red-800 text-2xl relative"
+        >
+          {/* CART ICON */}
           <ShoppingBag
             onClick={() => dispatch(toggleCart())}
             className="cursor-pointer hover:text-red-900"
           />
 
+          {/* PROFILE & DROPDOWN */}
           {token && (
             <div
               className="relative"
@@ -69,7 +87,7 @@ const Navbar = () => {
             >
               <User className="cursor-pointer hover:text-red-900" />
               {profileDropdown && (
-                <div className="absolute right-0  bg-white text-black shadow-xl rounded-lg py-2  ml-5 w-44 border border-gray-200">
+                <div className="absolute right-0 bg-white text-black shadow-xl rounded-lg py-2 ml-5 w-44 border border-gray-200">
                   <NavLink
                     to="/userprofile"
                     className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 text-sm"
@@ -93,18 +111,18 @@ const Navbar = () => {
             </div>
           )}
 
+          {/* RIVE LOGIN BUTTON (DESKTOP) */}
           {!token && (
-            <NavLink to="/login">
-              <div className="bg-red-800 px-4 py-1 rounded-md hover:bg-red-900">
-                <button className="text-white text-lg font-[poppins]">Login</button>
-              </div>
-            </NavLink>
+            <div className="w-32">
+              <RiveLoginButton onClick={() => navigate("/login")} />
+            </div>
           )}
         </div>
       </div>
 
+      {/* MOBILE NAVBAR */}
       <div className="md:hidden fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-lg flex items-center justify-between px-5 py-4 border-b border-gray-200">
-        <p className="text-2xl text-red-800 font-extrabold  tracking-wide">
+        <p className="text-2xl text-red-800 font-extrabold tracking-wide">
           Vestido Club
         </p>
 
@@ -114,16 +132,22 @@ const Navbar = () => {
               <User className="w-6 h-6 cursor-pointer hover:text-amber-600 transition-all" />
             </NavLink>
           )}
+
           <ShoppingBag
             onClick={() => dispatch(toggleCart())}
             className="w-6 h-6 cursor-pointer hover:text-amber-600 transition-all"
           />
-          <button onClick={() => setUserIcon(true)} className="hover:text-amber-600 transition-all">
+
+          <button
+            onClick={() => setUserIcon(true)}
+            className="hover:text-amber-600 transition-all"
+          >
             <Menu className="w-7 h-7" />
           </button>
         </div>
       </div>
 
+      {/* MOBILE DRAWER */}
       <div
         ref={drawerRef}
         className={`fixed top-0 right-0 h-full bg-black/90 z-50 overflow-hidden transition-all duration-300 ease-in-out ${
@@ -132,18 +156,33 @@ const Navbar = () => {
       >
         <div className="flex flex-col justify-between text-white h-full">
           <div>
-            <div onClick={() => setUserIcon(false)} className="cursor-pointer border-b border-gray-700">
+            <div
+              onClick={() => setUserIcon(false)}
+              className="cursor-pointer border-b border-gray-700"
+            >
               <p className="text-white p-4 font-semibold">Back</p>
             </div>
 
             <div className="flex font-[Playfair] font-extrabold flex-col mt-4 space-y-4 pl-6 text-lg">
-              <NavLink onClick={() => setUserIcon(false)} to="/" className="hover:text-red-400">
+              <NavLink
+                onClick={() => setUserIcon(false)}
+                to="/"
+                className="hover:text-red-400"
+              >
                 HOME
               </NavLink>
-              <NavLink onClick={() => setUserIcon(false)} to="/fashion" className="hover:text-red-400">
+              <NavLink
+                onClick={() => setUserIcon(false)}
+                to="/fashion"
+                className="hover:text-red-400"
+              >
                 FASHION
               </NavLink>
-              <NavLink onClick={() => setUserIcon(false)} to="/favourite" className="hover:text-red-400">
+              <NavLink
+                onClick={() => setUserIcon(false)}
+                to="/favourite"
+                className="hover:text-red-400"
+              >
                 FAVOURITE
               </NavLink>
             </div>
@@ -158,11 +197,10 @@ const Navbar = () => {
                 Logout
               </p>
             ) : (
-              <NavLink to="/login" onClick={() => setUserIcon(false)}>
-                <p className="cursor-pointer text-xl text-right text-green-500 hover:text-green-700">
-                  Login
-                </p>
-              </NavLink>
+              // MOBILE RIVE LOGIN BUTTON
+              <div onClick={() => setUserIcon(false)}>
+                <RiveLoginButton onClick={() => navigate("/login")} />
+              </div>
             )}
           </div>
         </div>
