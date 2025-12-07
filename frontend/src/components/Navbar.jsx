@@ -7,9 +7,6 @@ import Cart from "./Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCart } from "../redux/cartSlice";
 
-// IMPORT RIVE LOGIN BUTTON
-import RiveLoginButton from "./RiveLoginButton";
-
 const Navbar = () => {
   const [userIcon, setUserIcon] = useState(false);
   const [profileDropdown, setProfileDropdown] = useState(false);
@@ -111,11 +108,14 @@ const Navbar = () => {
             </div>
           )}
 
-          {/* RIVE LOGIN BUTTON (DESKTOP) */}
+          {/* LOGIN BUTTON (DESKTOP) */}
           {!token && (
-            <div className="w-32">
-              <RiveLoginButton onClick={() => navigate("/login")} />
-            </div>
+            <button
+              onClick={() => navigate("/login")}
+              className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-all"
+            >
+              Login
+            </button>
           )}
         </div>
       </div>
@@ -197,10 +197,16 @@ const Navbar = () => {
                 Logout
               </p>
             ) : (
-              // MOBILE RIVE LOGIN BUTTON
-              <div onClick={() => setUserIcon(false)}>
-                <RiveLoginButton onClick={() => navigate("/login")} />
-              </div>
+              // MOBILE LOGIN BUTTON
+              <button
+                onClick={() => {
+                  setUserIcon(false);
+                  navigate("/login");
+                }}
+                className="bg-red-600 text-white w-full py-2 rounded-md hover:bg-red-700 transition-all"
+              >
+                Login
+              </button>
             )}
           </div>
         </div>
