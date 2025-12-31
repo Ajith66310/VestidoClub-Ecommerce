@@ -112,7 +112,7 @@ const Navbar = () => {
           {!token && (
             <button
               onClick={() => navigate("/login")}
-              className="bg-red-800 text-white px-3 font-serif py-1 rounded-md hover:bg-red-700 transition-all"
+              className="bg-red-800 text-white px-3 font-mono py-1 rounded-md hover:bg-red-700 transition-all"
             >
               Login
             </button>
