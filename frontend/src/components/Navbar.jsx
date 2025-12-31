@@ -203,7 +203,7 @@ const Navbar = () => {
                   setUserIcon(false);
                   navigate("/login");
                 }}
-                className="bg-red-600 text-white w-full py-2 rounded-md hover:bg-red-700 transition-all"
+                className="bg-red-600 text-white w-full py-2 rounded-md h-10 hover:bg-red-700 transition-all"
               >
                 Login
               </button>

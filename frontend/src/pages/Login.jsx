@@ -112,7 +112,7 @@ const Login = () => {
 
           <button
             type='submit'
-            className='w-full h-8 rounded-lg font-[Poppins] font-semibold bg-red-400 text-white shadow-md hover:shadow-lg transition'
+            className='w-full h-11 rounded-lg font-[Poppins] font-semibold bg-red-400 text-white shadow-md hover:shadow-lg transition'
           >
             Login
           </button>
