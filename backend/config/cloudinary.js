@@ -1,4 +1,3 @@
-// backend/config/cloudinary.js
 import { v2 as cloudinary } from 'cloudinary';
 import 'dotenv/config.js'
 cloudinary.config({
